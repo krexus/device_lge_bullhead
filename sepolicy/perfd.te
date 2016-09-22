@@ -30,3 +30,6 @@ allow perfd sysfs_power_management:file w_file_perms;
 dontaudit perfd self:capability kill;
 
 allow perfd cameraserver:process signull;
+
+allow perfd system_server:file write;
+
