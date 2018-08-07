@@ -24,10 +24,10 @@ PRODUCT_COPY_FILES := device/lge/bullhead/apns-full-conf.xml:system/etc/apns-con
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
 
-PRODUCT_NAME := aosp_bullhead
+PRODUCT_NAME := bullhead
 PRODUCT_DEVICE := bullhead
-PRODUCT_BRAND := Android
-PRODUCT_MODEL := AOSP on BullHead
+PRODUCT_BRAND := Google
+PRODUCT_MODEL := Nexus 5X
 PRODUCT_MANUFACTURER := LGE
 PRODUCT_RESTRICT_VENDOR_FILES := false
 
@@ -37,6 +37,6 @@ $(call inherit-product, device/lge/bullhead/device.mk)
 $(call inherit-product-if-exists, vendor/lge/bullhead/device-vendor.mk)
 
 PRODUCT_PACKAGES += \
-    Launcher3 \
+    Launcher3QuickStep \
     WallpaperPicker
 
