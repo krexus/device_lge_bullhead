@@ -553,6 +553,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.fuse_sdcard=true
 
+# Disable sdcardfs
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.sys.sdcardfs=0
+
 # Power HAL
 PRODUCT_PACKAGES += \
     power.bullhead \
