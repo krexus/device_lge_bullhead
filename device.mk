@@ -22,14 +22,13 @@
 # Enable support for chinook sensorhub
 TARGET_USES_CHINOOK_SENSORHUB := false
 
-
-#ifeq ($(TARGET_PREBUILT_KERNEL),)
-#  LOCAL_KERNEL := device/lge/bullhead-kernel/Image.gz-dtb
-#else
-#  LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
-#endif
-#PRODUCT_COPY_FILES := \
-#    $(LOCAL_KERNEL):kernel
+ifeq ($(TARGET_PREBUILT_KERNEL),)
+  LOCAL_KERNEL := device/lge/bullhead-kernel/Image.gz-dtb
+else
+  LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
+endif
+PRODUCT_COPY_FILES := \
+    $(LOCAL_KERNEL):kernel
 
 PRODUCT_SHIPPING_API_LEVEL := 23
 
