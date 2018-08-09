@@ -22,14 +22,14 @@
 # Enable support for chinook sensorhub
 TARGET_USES_CHINOOK_SENSORHUB := false
 
-ifeq ($(TARGET_PREBUILT_KERNEL),)
-  LOCAL_KERNEL := device/lge/bullhead-kernel/Image.gz-dtb
-else
-  LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
-endif
 
-PRODUCT_COPY_FILES := \
-    $(LOCAL_KERNEL):kernel
+#ifeq ($(TARGET_PREBUILT_KERNEL),)
+#  LOCAL_KERNEL := device/lge/bullhead-kernel/Image.gz-dtb
+#else
+#  LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
+#endif
+#PRODUCT_COPY_FILES := \
+#    $(LOCAL_KERNEL):kernel
 
 PRODUCT_SHIPPING_API_LEVEL := 23
 
@@ -525,11 +525,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Property for loading BDA from bdaddress module in kernel
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.bt.bdaddr_path=/persist/bdaddr.txt
-
-# Bluetooth WiPower
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.vendor.bluetooth.emb_wp_mode=true \
-    ro.vendor.bluetooth.wipower=true
 
 # limit dex2oat threads to improve thermals
 PRODUCT_PROPERTY_OVERRIDES += \
