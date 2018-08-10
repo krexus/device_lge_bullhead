@@ -159,6 +159,7 @@ TARGET_PER_MGR_ENABLED := true
 
 TARGET_FS_CONFIG_GEN += device/lge/bullhead/configs/config.fs
 
+-include device/lge/bullhead-vendorimage/BoardConfig.mk
 -include vendor/lge/bullhead/BoardConfigVendor.mk
 
 # Testing related defines

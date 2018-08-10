@@ -30,13 +30,10 @@ PRODUCT_BRAND := google
 PRODUCT_MODEL := Nexus 5X
 PRODUCT_MANUFACTURER := LGE
 PRODUCT_RESTRICT_VENDOR_FILES := false
-TARGET_CUSTOM_DEFCONFIG := zest
 
 $(call inherit-product, device/lge/bullhead/device.mk)
 $(call inherit-product, vendor/lge/bullhead/bullhead-vendor.mk)
-# Vendor image
-TARGET_USES_SOURCE_VENDOR_IMAGE := true
-$(call inherit-product, vendor/lge/bullhead/bullhead-vendorimage.mk)
+$(call inherit-product, device/lge/bullhead-vendorimage/bullhead-vendorimage.mk)
 
 PRODUCT_PACKAGES += \
     Launcher3QuickStep \
