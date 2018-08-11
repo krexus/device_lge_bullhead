@@ -137,7 +137,7 @@ PRODUCT_COPY_FILES += \
 
 # NFC config files
 PRODUCT_COPY_FILES += \
-    device/lge/bullhead/nfc/libnfc-nci.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-nci.conf \
+    device/lge/bullhead/nfc/libnfc-brcm.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-brcm.conf \
     device/lge/bullhead/nfc/libnfc-nxp.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-nxp.conf
 
 # NFC library
@@ -274,6 +274,7 @@ PRODUCT_PACKAGES += \
     Tag \
     android.hardware.nfc@1.0-impl \
     nfc_nci.msm8992 \
+    com.android.nfc_extras
 
 # Keymaster HAL
 PRODUCT_PACKAGES += \
