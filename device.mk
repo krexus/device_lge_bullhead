@@ -187,7 +187,9 @@ PRODUCT_PACKAGES += \
     android.hardware.drm@1.0-service \
     android.hardware.light@2.0-service \
     android.hardware.memtrack@1.0-service \
-    android.hardware.sensors@1.0-service
+    android.hardware.sensors@1.0-service \
+    android.hardware.keymaster@3.0-service \
+    android.hardware.keymaster@3.0-service.rc
 
 PRODUCT_PACKAGES += \
     gralloc.msm8992 \
