@@ -278,6 +278,7 @@ PRODUCT_PACKAGES += \
     Tag \
     android.hardware.nfc@1.0-impl \
     nfc_nci.msm8992 \
+    com.android.nfc_extras
 
 # Keymaster HAL
 PRODUCT_PACKAGES += \
