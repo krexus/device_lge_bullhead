@@ -137,7 +137,7 @@ PRODUCT_COPY_FILES += \
 
 # NFC config files
 PRODUCT_COPY_FILES += \
-    device/lge/bullhead/nfc/libnfc-nci.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-nci.conf \
+    device/lge/bullhead/nfc/libnfc-brcm.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-brcm.conf \
     device/lge/bullhead/nfc/libnfc-nxp.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-nxp.conf
 
 # NFC library
@@ -146,8 +146,8 @@ PRODUCT_COPY_FILES += \
 
 # For WiFi
 PRODUCT_COPY_FILES += \
-    device/lge/bullhead/wifi/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf \
-    device/lge/bullhead/wifi/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf \
+    device/lge/bullhead/wifi/wpa_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/wpa_supplicant_overlay.conf \
+    device/lge/bullhead/wifi/p2p_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/p2p_supplicant_overlay.conf \
     device/lge/bullhead/wifi/WCNSS_cfg.dat:system/etc/firmware/wlan/qca_cld/WCNSS_cfg.dat \
     device/lge/bullhead/wifi/WCNSS_qcom_cfg.ini:system/etc/firmware/wlan/qca_cld/WCNSS_qcom_cfg.ini
 
@@ -274,6 +274,7 @@ PRODUCT_PACKAGES += \
     Tag \
     android.hardware.nfc@1.0-impl \
     nfc_nci.msm8992 \
+    com.android.nfc_extras
 
 # Keymaster HAL
 PRODUCT_PACKAGES += \
@@ -541,6 +542,11 @@ PRODUCT_PACKAGES += \
 # Bluetooth SoC
 PRODUCT_PROPERTY_OVERRIDES += \
     vendor.qcom.bluetooth.soc=rome
+
+# Bluetooth configs
+PRODUCT_COPY_FILES += \
+    device/lge/bullhead/bluetooth/bt_did.conf:system/etc/bluetooth/bt_did.conf \
+    device/lge/bullhead/bluetooth/bt_stack.conf:system/etc/bluetooth/bt_stack.conf
 
 # Property for loading BDA from bdaddress module in kernel
 PRODUCT_PROPERTY_OVERRIDES += \
