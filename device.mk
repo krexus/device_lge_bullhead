@@ -194,7 +194,9 @@ PRODUCT_PACKAGES += \
     android.hardware.nfc@1.1-service \
     android.hardware.nfc@1.1-service.rc \
     android.hardware.gatekeeper@1.0-service \
-    android.hardware.camera.provider@2.4-service
+    android.hardware.camera.provider@2.4-service \
+    android.hardware.graphics.composer@2.1-service \
+    android.hardware.graphics.mapper@2.0-service
 
 PRODUCT_PACKAGES += \
     gralloc.msm8992 \
