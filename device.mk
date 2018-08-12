@@ -193,7 +193,8 @@ PRODUCT_PACKAGES += \
     android.hardware.keymaster@3.0-service.rc \
     android.hardware.nfc@1.1-service \
     android.hardware.nfc@1.1-service.rc \
-    android.hardware.gatekeeper@1.0-service
+    android.hardware.gatekeeper@1.0-service \
+    android.hardware.camera.provider@2.4-service
 
 PRODUCT_PACKAGES += \
     gralloc.msm8992 \
