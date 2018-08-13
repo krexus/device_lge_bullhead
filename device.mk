@@ -138,11 +138,11 @@ PRODUCT_COPY_FILES += \
 # NFC config files
 PRODUCT_COPY_FILES += \
     device/lge/bullhead/nfc/libnfc-nci.conf:system/etc/libnfc-nci.conf \
-    device/lge/bullhead/nfc/libnfc-nxp.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-nxp.conf
+    device/lge/bullhead/nfc/libnfc-nxp.conf:system/etc/libnfc-nxp.conf
 
 # NFC library
 PRODUCT_COPY_FILES += \
-    device/lge/bullhead/nfc/libpn548ad_fw.so:$(TARGET_COPY_OUT_VENDOR)/lib/libpn548ad_fw.so
+    device/lge/bullhead/nfc/libpn548ad_fw.so:$(TARGET_COPY_OUT_VENDOR)/firmware/libpn548ad_fw.so
 
 # For WiFi
 PRODUCT_COPY_FILES += \
@@ -190,8 +190,6 @@ PRODUCT_PACKAGES += \
     android.hardware.sensors@1.0-service \
     android.hardware.keymaster@3.0-service \
     android.hardware.keymaster@3.0-service.rc \
-    android.hardware.nfc@1.1-service \
-    android.hardware.nfc@1.1-service.rc \
     android.hardware.gatekeeper@1.0-service \
     android.hardware.camera.provider@2.4-service \
     android.hardware.graphics.composer@2.1-service \
@@ -282,7 +280,8 @@ PRODUCT_PACKAGES += \
     Tag \
     nfc_nci.msm8992 \
     com.android.nfc_extras \
-    vendor.nxp.nxpnfc@1.0
+    android.hardware.nfc@1.0 \
+    android.hardware.nfc@1.0-impl
 
 # VR packages
 PRODUCT_PACKAGES += \
@@ -645,7 +644,7 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 
 # Disable rescue party
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.sys.disable_rescue=true
+    persist.sys.disable_rescue=1
 
 # setup dalvik vm configs.
 $(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
