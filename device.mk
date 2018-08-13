@@ -133,7 +133,7 @@ PRODUCT_COPY_FILES += \
 
 # For GPS
 PRODUCT_COPY_FILES += \
-    device/lge/bullhead/gps/sec_config:$(TARGET_COPY_OUT_VENDOR)/etc/sec_config
+    device/lge/bullhead/gps/sec_config:system/etc/sec_config
 
 # NFC config files
 PRODUCT_COPY_FILES += \
