@@ -389,7 +389,8 @@ PRODUCT_PACKAGES += \
     bullhead_wlan_mac
 
 DEVICE_PACKAGE_OVERLAYS := \
-    device/lge/bullhead/overlay
+    device/lge/bullhead/overlay \
+    device/lge/bullhead/overlay-new
 
 # Enable AAC 5.1 output
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -404,6 +405,14 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.audio.fluence.speaker=true \
     persist.speaker.prot.enable=true \
     ro.config.vc_call_vol_steps=7
+
+# Google Sans fonts
+PRODUCT_COPY_FILES += \
+    frameworks/base/data/fonts/GoogleSans-Regular.ttf:system/fonts/GoogleSans-Regular.ttf \
+    frameworks/base/data/fonts/GoogleSans-Bold.ttf:system/fonts/GoogleSans-Bold.ttf \
+    frameworks/base/data/fonts/GoogleSans-BoldItalic.ttf:system/fonts/GoogleSans-BoldItalic.ttf \
+    frameworks/base/data/fonts/GoogleSans-Medium.ttf:system/fonts/GoogleSans-Medium.ttf \
+    frameworks/base/data/fonts/GoogleSans-MediumItalic.ttf:system/fonts/GoogleSans-MediumItalic.ttf
 
 # Default OMX service to non-Treble
 PRODUCT_PROPERTY_OVERRIDES += \
