@@ -284,6 +284,16 @@ PRODUCT_PACKAGES += \
     com.android.nfc_extras \
     vendor.nxp.nxpnfc@1.0
 
+# VR packages
+PRODUCT_PACKAGES += \
+    android.hardware.vr@1.0-service \
+    android.hardware.vr@1.0-impl \
+    android.hardware.vr@1.0 \
+    vr_hwc \
+    libdvr \
+    libpvr \
+    vr.bullhead
+
 # Keymaster HAL
 PRODUCT_PACKAGES += \
     android.hardware.keymaster@3.0-impl
