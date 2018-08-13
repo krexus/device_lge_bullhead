@@ -137,7 +137,7 @@ PRODUCT_COPY_FILES += \
 
 # NFC config files
 PRODUCT_COPY_FILES += \
-    device/lge/bullhead/nfc/libnfc-brcm.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-brcm.conf \
+    device/lge/bullhead/nfc/libnfc-nci.conf:system/etc/libnfc-nci.conf \
     device/lge/bullhead/nfc/libnfc-nxp.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-nxp.conf
 
 # NFC library
@@ -187,7 +187,15 @@ PRODUCT_PACKAGES += \
     android.hardware.drm@1.0-service \
     android.hardware.light@2.0-service \
     android.hardware.memtrack@1.0-service \
-    android.hardware.sensors@1.0-service
+    android.hardware.sensors@1.0-service \
+    android.hardware.keymaster@3.0-service \
+    android.hardware.keymaster@3.0-service.rc \
+    android.hardware.nfc@1.1-service \
+    android.hardware.nfc@1.1-service.rc \
+    android.hardware.gatekeeper@1.0-service \
+    android.hardware.camera.provider@2.4-service \
+    android.hardware.graphics.composer@2.1-service \
+    android.hardware.graphics.mapper@2.0-service
 
 PRODUCT_PACKAGES += \
     gralloc.msm8992 \
@@ -535,6 +543,7 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 
 # Bluetooth HAL
 PRODUCT_PACKAGES += \
+    android.hardware.bluetooth@1.0-service \
     android.hardware.bluetooth@1.0-impl \
     android.hardware.bluetooth@1.0-impl:64 \
     libbt-vendor
