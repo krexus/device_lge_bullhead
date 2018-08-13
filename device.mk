@@ -281,7 +281,8 @@ PRODUCT_PACKAGES += \
     nfc_nci.msm8992 \
     com.android.nfc_extras \
     android.hardware.nfc@1.0 \
-    android.hardware.nfc@1.0-impl
+    android.hardware.nfc@1.0-impl \
+    android.hardware.nfc@1.0-service
 
 # VR packages
 PRODUCT_PACKAGES += \
