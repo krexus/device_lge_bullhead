@@ -193,7 +193,8 @@ PRODUCT_PACKAGES += \
     android.hardware.gatekeeper@1.0-service \
     android.hardware.camera.provider@2.4-service \
     android.hardware.graphics.composer@2.1-service \
-    android.hardware.graphics.mapper@2.0-service
+    android.hardware.graphics.mapper@2.0-service \
+    android.hardware.configstore@1.0-service
 
 PRODUCT_PACKAGES += \
     gralloc.msm8992 \
@@ -325,6 +326,10 @@ PRODUCT_PACKAGES += \
     android.hardware.wifi@1.0:64 \
     android.hardware.wifi@1.1:64 \
     android.hardware.wifi@1.2:64
+
+# Configstore HAL
+PRODUCT_PACKAGES += \
+    android.hardware.configstore@1.0-impl
 
 # Camera
 PRODUCT_PACKAGES += \
