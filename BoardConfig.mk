@@ -21,14 +21,19 @@ TARGET_CPU_ABI2 :=
 TARGET_CPU_VARIANT := cortex-a53
 
 TARGET_2ND_ARCH := arm
-TARGET_2ND_ARCH_VARIANT := armv7-a-neon
+TARGET_2ND_ARCH_VARIANT := armv8-a
 TARGET_2ND_CPU_ABI := armeabi-v7a
 TARGET_2ND_CPU_ABI2 := armeabi
 TARGET_2ND_CPU_VARIANT := cortex-a53.a57
 
-ENABLE_CPUSETS := true
-
 TARGET_NO_BOOTLOADER := true
+
+# Inline kernel
+#KERNEL_TOOLCHAIN := $(ANDROID_TOP)/prebuilts/gcc/$(HOST_OS)-x86/aarch64/aarch64-linux-android-4.9/bin
+#KERNEL_TOOLCHAIN_PREFIX := aarch64-linux-android-
+#TARGET_KERNEL_SOURCE := kernel/lge/bullhead
+#TARGET_KERNEL_CONFIG := zest_defconfig
+#BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
 
 BOARD_KERNEL_BASE        := 0x00000000
 BOARD_KERNEL_PAGESIZE    := 4096
@@ -37,7 +42,7 @@ BOARD_RAMDISK_OFFSET     := 0x02000000
 
 BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.hardware=bullhead boot_cpus=0-5
 BOARD_KERNEL_CMDLINE += lpm_levels.sleep_disabled=1 msm_poweroff.download_mode=0
-BOARD_KERNEL_CMDLINE += loop.max_part=7
+BOARD_KERNEL_CMDLINE += loop.max_part=7 androidboot.selinux=permissive
 
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset $(BOARD_RAMDISK_OFFSET) --tags_offset $(BOARD_KERNEL_TAGS_OFFSET)
 
@@ -67,10 +72,10 @@ BOARD_USES_SECURE_SERVICES := true
 TARGET_NO_RADIOIMAGE := true
 TARGET_BOARD_PLATFORM := msm8992
 TARGET_BOOTLOADER_BOARD_NAME := bullhead
-TARGET_BOARD_INFO_FILE := device/lge/bullhead/board-info.txt
+TARGET_BOARD_INFO_FILE := device/lge/bullhead/configs/board-info.txt
 TARGET_NO_RPC := true
 
-BOARD_EGL_CFG := device/lge/bullhead/egl.cfg
+BOARD_EGL_CFG := device/lge/bullhead/egl/egl.cfg
 
 # Shader cache config options
 # Maximum size of the  GLES Shaders that can be cached for reuse.
@@ -100,15 +105,6 @@ HAVE_ADRENO_SOURCE:= false
 
 OVERRIDE_RS_DRIVER:= libRSDriver_adreno.so
 
-# Enable dex-preoptimization to speed up first boot sequence
-ifeq ($(HOST_OS),linux)
-  ifneq ($(TARGET_BUILD_VARIANT),eng)
-    ifeq ($(WITH_DEXPREOPT),)
-      WITH_DEXPREOPT := true
-    endif
-  endif
-endif
-
 TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_BOOTIMAGE_PARTITION_SIZE := 33554432
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 33554432
@@ -124,9 +120,16 @@ BOARD_FLASH_BLOCK_SIZE := 131072
 # Build a separate vendor.img
 TARGET_COPY_OUT_VENDOR := vendor
 
-TARGET_RECOVERY_FSTAB = device/lge/bullhead/fstab.bullhead
+# Vendor image information
+# Use only if target uses source vendor image
+ifeq ($(TARGET_USES_SOURCE_VENDOR_IMAGE),true)
+BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
+BOARD_VENDORIMAGE_PARTITION_SIZE := 260046848
+endif
 
-TARGET_RELEASETOOLS_EXTENSIONS := device/lge/bullhead
+TARGET_RECOVERY_FSTAB = device/lge/bullhead/rootdir/fstab.bullhead
+
+TARGET_RELEASETOOLS_EXTENSIONS := device/lge/bullhead/releasetools
 
 BOARD_CHARGER_ENABLE_SUSPEND := true
 
@@ -154,22 +157,13 @@ NXP_CHIP_TYPE := 2
 #Enable peripheral manager
 TARGET_PER_MGR_ENABLED := true
 
-USE_CLANG_PLATFORM_BUILD := true
+TARGET_FS_CONFIG_GEN += device/lge/bullhead/configs/config.fs
 
-USE_CLANG_PLATFORM_BUILD := true
-
-TARGET_FS_CONFIG_GEN += device/lge/bullhead/config.fs
-
+-include device/lge/bullhead-vendorimage/BoardConfig.mk
 -include vendor/lge/bullhead/BoardConfigVendor.mk
 
 # Testing related defines
 BOARD_PERFSETUP_SCRIPT := platform_testing/scripts/perf-setup/bullhead-setup.sh
 
-ifeq ($(TARGET_PRODUCT),aosp_bullhead_svelte)
-BOARD_KERNEL_CMDLINE += mem=1024M maxcpus=2
-MALLOC_SVELTE := true
-endif
-ifeq ($(TARGET_PRODUCT),bullhead_svelte)
-BOARD_KERNEL_CMDLINE += mem=1024M
-MALLOC_SVELTE := true
-endif
+DEVICE_MANIFEST_FILE := device/lge/bullhead/manifests/manifest.xml
+DEVICE_MATRIX_FILE := device/lge/bullhead/manifests/compatibility_matrix.xml
